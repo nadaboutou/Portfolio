@@ -1,0 +1,264 @@
+/* Base Styles */
+.header {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 0;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.875rem;
+  height: 1.3125rem;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(0.5625rem) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-0.5625rem) rotate(-45deg);
+}
+
+.bar {
+  height: 0.1875rem;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+}
+
+/* Navigation Links */
+.navlinks {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background-color: rgba(51, 51, 51, 0.98);
+  backdrop-filter: blur(0.3125rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: right 0.4s cubic-bezier(0.17, 0.67, 0.21, 0.99);
+  z-index: 90;
+}
+
+.navlinks.show {
+  right: 0;
+}
+
+.navlinks li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.navlinks li a:hover {
+  color: #4CAF50;
+}
+
+.navlinks li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0.125rem;
+  background-color: #4CAF50;
+  transition: width 0.3s ease;
+}
+
+.navlinks li a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: calc(100vh - 5rem);
+  padding: 0 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #4CAF50;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  max-width: 37.5rem;
+  line-height: 1.6;
+}
+
+/* Button */
+.button {
+  padding: 0.75rem 1.875rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 1.875rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.button:hover {
+  background-color: #45a049;
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.buttonLink {
+  text-decoration: none;
+}
+
+/* Mobile Landscape */
+@media (max-height: 31.25rem) {
+  .hero {
+    height: auto;
+    padding: 3rem 0;
+  }
+}
+
+/* Tablet and Small Desktop (768px and up) */
+@media (min-width: 48em) {
+  .hero {
+    padding: 0 2rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.75rem;
+  }
+}
+
+/* Desktop (992px and up) */
+@media (min-width: 62em) {
+  .hamburger {
+    display: none;
+  }
+
+  .navlinks {
+    position: static;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: none;
+    gap: 2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .navlinks li a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+  }
+
+  .navlinks li a::after {
+    height: 0.1875rem;
+  }
+
+  .title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .button {
+    padding: 0.9375rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 75em) {
+  .navlinks {
+    gap: 3rem;
+  }
+
+  .navlinks li a {
+    font-size: 1.2rem;
+  }
+
+  .title {
+    font-size: 4.5rem;
+  }
+
+  .subtitle {
+    font-size: 2.25rem;
+    max-width: 43.75rem;
+  }
+}
